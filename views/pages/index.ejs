@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+<main>
+  <div class="messages">
+    <% messages.forEach(message => { %>
+      <div class="msg">
+        <p class="msg-text">Message: <%= message.text %></p>
+        <p class="msg-user">User: <%= message.user %></p>
+        <p class="msg.time">Time: <%= message.added %></p>
+        <p>Details</p>
+      </div>
+    <% }); %>
+	</div>
+  <div class="msg-new">
+    <a href="/new" class="msg-new">New Message</a>
+  </div>
+</main>
+<%- include('../partials/footer') %>

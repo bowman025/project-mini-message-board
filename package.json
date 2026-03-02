@@ -1,0 +1,26 @@
+{
+  "name": "project-mini-message-board",
+  "version": "1.0.0",
+  "description": "A simple Express app in accordance with The Odin Project's NodeJS Course.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bowman025/project-mini-message-board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bowman025/project-mini-message-board/issues"
+  },
+  "homepage": "https://github.com/bowman025/project-mini-message-board#readme",
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "express": "^5.2.1"
+  }
+}

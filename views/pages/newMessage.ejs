@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+<main>
+	<form method="post" action="/new">
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name">
+		<label for="message">Message</label>
+		<input type="text" name="message" id="message">
+		<button>Submit</button>
+	</form>
+  <a href="/" class="msg-new">Home</a>
+</main>
+<%- include('../partials/footer') %>
