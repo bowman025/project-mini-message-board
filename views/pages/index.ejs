@@ -5,8 +5,8 @@
       <div class="msg">
         <p class="msg-text">Message: <%= message.text %></p>
         <p class="msg-user">User: <%= message.user %></p>
-        <p class="msg.time">Time: <%= message.added %></p>
-        <p>Details</p>
+        <p class="msg-time">Time: <%= message.added %></p>
+        <a  class="msg-details" href="/message/<%= message.id %>">Details</a>
       </div>
     <% }); %>
 	</div>
