@@ -1,13 +1,17 @@
 function formatDateTime(date) {
-  const datePart = date.toLocaleDateString('en-CA');
-  const timePart = date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-  const tzPart = new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' })
-    .formatToParts(date)
-    .find(part => part.type === 'timeZoneName').value;
+  const datePart = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(date);
 
-  const result = `${datePart} at ${timePart} ${tzPart}`;
+  const timePart = new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).format(date);
 
-  return result;
+  return `${datePart} at ${timePart}`;
 }
 
 module.exports = formatDateTime;

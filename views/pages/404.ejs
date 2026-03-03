@@ -1,9 +1,11 @@
 <%- include('../partials/header') %>
 <main>
-  <div class="err-msg">
-		<p class="err-text">There was an error!</p>
-		<p class="err-text"><%= message %></p>
+  <div class="err">
+    <div class="err-msg">
+        <p class="err-text">There was an error!</p>
+        <p class="err-text"><%= message %></p>
+    </div>
+    <a href="/" class="err-home">Home</a>
   </div>
-  <a href="/" class="err-home">Home</a>
 </main>
 <%- include('../partials/footer') %>

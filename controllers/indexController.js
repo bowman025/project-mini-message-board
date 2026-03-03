@@ -2,7 +2,13 @@ const messages = require('../db/messages');
 const formatDateTime = require('../utils/formatDateTime');
 
 function listMessages(_, res) {
-  res.render('index', { title: 'Mini Message Board', messages });
+  const sorted = [...messages]
+    .sort((a, b) => b.added - a.added)
+    .map(m => ({
+      ...m,
+      added: formatDateTime(m.added),
+    }));
+  res.render('index', { title: 'MMB: Mini Message Board', messages: sorted });
 };
 
 function newMessageForm(_, res) {
@@ -14,7 +20,7 @@ function createMessage(req, res) {
     id: crypto.randomUUID(),
     text: req.body.message,
     user: req.body.name,
-    added: formatDateTime(new Date()),
+    added: new Date(),
   });
   res.redirect('/');
 };

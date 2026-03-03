@@ -62,6 +62,13 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
+  background-color: rgb(48, 48, 48);
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  width: clamp(280px, 80%, 1800px);
 }
 
 .msg {
@@ -70,6 +77,10 @@ body {
   background-color: #bdbdbd;
   border: 1px solid black;
   border-radius: 10px;
+}
+
+.msg-new {
+  color: white;
 }
 
 header,

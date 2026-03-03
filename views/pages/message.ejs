@@ -1,10 +1,12 @@
 <%- include('../partials/header') %>
 <main>
-  <div class="1-msg">
-    <p class="1-msg-text">Message: <%= message.text %></p>
-    <p class="1-msg-user">User: <%= message.user %></p>
-    <p class="1-msg-time">Time: <%= message.added %></p>
+  <div class="one-message">
+    <div class="1-msg">
+      <p class="1-msg-text">Message: <%= message.text %></p>
+      <p class="1-msg-user">User: <%= message.user %></p>
+      <p class="1-msg-time">Time: <%= message.added %></p>
+    </div>
+      <a href="/" class="1-msg-home">Home</a>
   </div>
-    <a href="/" class="1-msg-home">Home</a>
 </main>
 <%- include('../partials/footer') %>
