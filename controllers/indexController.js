@@ -1,6 +1,6 @@
 const messages = require('../db/messages');
 const formatDateTime = require('../utils/formatDateTime');
-const CustomValidationError = require('../errors/CustomValidationError')
+const CustomValidationError = require('../errors/CustomValidationError');
 
 function listMessages(_, res) {
   const sorted = [...messages]
@@ -19,7 +19,7 @@ function newMessageForm(_, res) {
 function createMessage(req, res, next) {
   const { name, message } = req.body;
   if (!name || !message) {
-    const err = new CustomValidationError('Name and message are required.');
+    const err = new CustomValidationError('Name and Message Are Required.');
     return next(err);
   }
   messages.push({

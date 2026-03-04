@@ -18,7 +18,7 @@ app.use('/', indexRouter);
 app.use('/message', messagesRouter);
 
 app.use((req, res, next) => {
-  next(new CustomNotFoundError('Page not found'));
+  next(new CustomNotFoundError('Page Not Found.'));
 });
 
 app.use((err, req, res, next) => {

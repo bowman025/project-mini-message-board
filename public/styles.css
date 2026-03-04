@@ -95,7 +95,8 @@ main {
   gap: 8px;
 }
 
-.msg {
+.msg,
+.one-message {
   padding: 10px;
   background-color: #bdbdbd;
   border: 1px solid black;
@@ -104,6 +105,10 @@ main {
 
 .msg-new {
   color: white;
+}
+
+.one-message {
+  margin-top: 50px;
 }
 
 header,
