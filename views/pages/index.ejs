@@ -1,16 +1,20 @@
 <%- include('../partials/header') %>
 <main>
   <div class="index">
-    <div class="new-message">
-      <a href="/new" class="msg-new">New Message</a>
+    <div class="new-message-div">
+      <a href="/new" class="new-message-link">New Message</a>
     </div>
-    <div class="messages">
+    <div class="messages-div">
       <% messages.forEach(message => { %>
         <div class="msg">
-          <p class="msg-text">Message: <%= message.text %></p>
-          <p class="msg-user">User: <%= message.user %></p>
-          <p class="msg-time">Time: <%= message.added %></p>
-          <a  class="msg-details" href="/message/<%= message.id %>">Details</a>
+          <div class="msg-user-text-time">
+            <p class="msg-user"><span class="msg-user-name"><%= message.user %></span><span class="italicized">
+              said</span>
+            </p>
+            <p class="msg-text"><%= message.text %></p>
+            <p class="msg-time"><span class="italicized">on</span> <%= message.added %></p>
+          </div>
+            <a  class="msg-details" href="/message/<%= message.id %>"><img src="/images/details.svg" alt="Details"></a>
         </div>
       <% }); %>
     </div>

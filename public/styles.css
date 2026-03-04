@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* CSS RESET STARTs HERE */
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -44,9 +46,6 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
-}
 
 /*
   10. Create a root stacking context
@@ -57,19 +56,42 @@ h1, h2, h3, h4, h5, h6 {
 
 /* CSS RESET ENDS HERE */
 
+:root {
+  --color-1: oklch(0.165 0.007 264);
+  --color-2: oklch(0.197 0.008 264);
+  --color-3: oklch(0.256 0.011 264);
+  --color-4: oklch(0.303 0.013 264);
+  --color-5: oklch(0.349 0.014 264);
+  --color-6: oklch(0.396 0.016 264);
+  --color-7: oklch(0.459 0.018 264);
+  --color-8: oklch(0.548 0.02 264);
+  --color-9: oklch(0.645 0.018 256);
+  --color-10: oklch(0.716 0.016 256);
+  --color-11: oklch(0.86 0.008 256);
+  --color-12: oklch(0.932 0.004 256);
+  --color-13: oklch(0.579 0.191 252);
+  --color-14: oklch(0.78 0.171 91);
+}
+
 body {
   height: 100dvh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  background-color: rgb(48, 48, 48);
+  background-color: var(--color-2);
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
 
 main {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  place-items: start center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .index {
@@ -79,46 +101,187 @@ main {
   grid-template-rows: 1fr auto;
 }
 
-.new-message {
-  place-self: end;
-  .msg-new {
+.new-message-div {
+  justify-self: end;
+  margin-bottom: 35px;
+  .new-message-link {
+    border: 1px solid var(--color-11);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 1.3rem;
     text-decoration: none;
+    color: var(--color-12);
+    background-color: var(--color-3);
   }
-  .msg-new:hover {
-    color: blue;
+  .new-message-link:hover {
+    color: var(--color-12);
+    background-color: var(--color-13);
+    border: 1px solid var(--color-14);
   }
 }
 
-.messages {
+.messages-div,
+.one-message-div {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+}
+
+
+.msg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.one-message-div {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  width: clamp(280px, 85vw, 900px);
+  padding: 12px 20px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  .msg-user {
+    color: var(--color-13);
+  }
 }
 
 .msg,
-.one-message {
-  padding: 10px;
-  background-color: #bdbdbd;
-  border: 1px solid black;
+.one-message-div {
   border-radius: 10px;
+  background-color: var(--color-3);
+  color: var(--color-12);
+  transition: transform 0.2s ease-in-out;
+}
+
+.msg:hover,
+.one-message-div:hover {
+  background-color: var(--color-4);
+  transform: scale(1.01);
+  outline: 1px solid var(--color-14);
+}
+
+.msg-user-text-time {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+}
+
+.msg-user {
+  font-size: 1.4rem;
+  .italicized {
+    color: var(--color-10);
+  }
+}
+
+.msg-user-name {
+  color: var(--color-13);
+}
+
+.msg-text {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+}
+
+.msg-time {
+  margin-top: 6px;
+  color: var(--color-10);
+  font-size: 0.8rem;
+  .italicized {
+    font-size: 0.8rem;
+  }
+}
+
+.msg-details {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 6px;
+  padding: 6px;
+  border-left: 1px solid var(--color-1);
+  border-radius: 0 8px 8px 0;
+  height: 100%;
+  width: clamp(40px, 7vw, 60px);
+}
+
+.msg-details:hover {
+  background-color: var(--color-6);
+}
+
+.msg-home {
+  place-self: center;
+  border: 1px solid var(--color-10);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--color-4);
+  transition: transform 0.2s ease-in-out;
+}
+
+.msg-home:hover {
+  transform: scale(1.1);
+  border: 1px solid var(--color-14);
 }
 
 .msg-new {
-  color: white;
+  color: var(--color-12);
 }
 
-.one-message {
-  margin-top: 50px;
+.italicized {
+  font-style: italic;
+  font-size: 1rem;
+}
+
+header {
+  margin-bottom: clamp(20px, 8vw, 50px);
+  padding: 8px;
+  h1 {
+    font-family: "Nabla", system-ui;
+    font-optical-sizing: auto;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "EDPT" 100,
+      "EHLT" 12;
+    text-wrap: nowrap;
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
 header,
 footer {
   text-align: center;
-  color: #bbb;
-  background-color: #000;
+  color: var(--color-11);
+  background-color: var(--color-1);
 }
 
 footer {
-  margin-top: 10px;
+  margin-top: 30px;
   padding: 10px;
+  a {
+    text-decoration: none;
+    color: var(--color-14);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .msg {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .msg-details {
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 3px;
+    border-left: none;
+    border-top: 1px solid var(--color-1);
+    img {
+      width: 32px;
+    }
+  }
 }
