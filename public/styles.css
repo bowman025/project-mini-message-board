@@ -65,14 +65,37 @@ body {
   background-color: rgb(48, 48, 48);
 }
 
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: start center;
+}
+
+.index {
+  width: clamp(280px, 85vw, 900px);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+.new-message {
+  place-self: end;
+  .msg-new {
+    text-decoration: none;
+  }
+  .msg-new:hover {
+    color: blue;
+  }
+}
+
 .messages {
   display: flex;
   flex-direction: column;
-  width: clamp(280px, 80%, 1800px);
+  gap: 8px;
 }
 
 .msg {
-  margin: 10px;
   padding: 10px;
   background-color: #bdbdbd;
   border: 1px solid black;
@@ -86,6 +109,11 @@ body {
 header,
 footer {
   text-align: center;
-  background-color: #333;
   color: #bbb;
+  background-color: #000;
+}
+
+footer {
+  margin-top: 10px;
+  padding: 10px;
 }

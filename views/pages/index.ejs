@@ -1,6 +1,9 @@
 <%- include('../partials/header') %>
 <main>
   <div class="index">
+    <div class="new-message">
+      <a href="/new" class="msg-new">New Message</a>
+    </div>
     <div class="messages">
       <% messages.forEach(message => { %>
         <div class="msg">
@@ -10,9 +13,6 @@
           <a  class="msg-details" href="/message/<%= message.id %>">Details</a>
         </div>
       <% }); %>
-    </div>
-    <div class="new-message">
-      <a href="/new" class="msg-new">New Message</a>
     </div>
   </div>
 </main>
