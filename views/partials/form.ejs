@@ -1,21 +1,29 @@
 <form class="msg-form" method="post" action="/new">
-	<label for="name">Name</label>
-	<input 
-		required 
-		type="text" 
-		name="name" 
-		id="name"
-		placeholder="John Doe"
-		maxlength="32"
-	>
-	<label for="message">Message</label>
-	<input 
-		required 
-		type="text" 
-		name="message" 
-		id="message"
-		placeholder="Hello World!"
-		maxlength="128"
-	>
-	<button class="msg-submit">Submit</button>
+	<div class="msg-form-name">
+		<label for="name">Name:</label>
+		<input
+			required
+			type="text"
+			name="name"
+			id="name"
+			placeholder="John Doe"
+			maxlength="48"
+		>
+		<p>*48 characters max</p>
+	</div>
+	<div class="msg-form-message">
+		<label for="message">Message:</label>
+		<input
+			required
+			type="text"
+			name="message"
+			id="message"
+			placeholder="Hello World!"
+			maxlength="256"
+		>
+		<p>*256 characters max</p>
+	</div>
+	<button class="msg-form-submit">
+		<img src="/images/submit.svg" alt="Submit">
+	</button>
 </form>
