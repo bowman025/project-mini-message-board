@@ -324,6 +324,24 @@ footer {
   }
 }
 
+.err {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-12);
+  .err-msg {
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 1.1rem;
+    font-style: italic;
+    text-align: center;
+  }
+  a {
+    color: var(--color-14);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .msg {
     flex-direction: column;
