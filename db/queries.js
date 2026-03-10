@@ -7,15 +7,16 @@ async function getAllMessages() {
 
 async function findMessage(id) {
   const message = await pool.query(
-    'SELECT * FROM messages WHERE id is ($1)',
+    'SELECT * FROM messages WHERE id = $1',
     [id]
   );
+  return message;
 }
 
 async function addMessage(text, username, added) {
   await pool.query(
     'INSERT INTO messages (text, username) VALUES ($1, $2, $3)',
-    [text, username, added],
+    [text, username, added]
   );
 }
 
