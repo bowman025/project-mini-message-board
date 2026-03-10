@@ -327,10 +327,14 @@ footer {
 .err {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   color: var(--color-12);
   .err-msg {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+  }
+  h1 {
+    text-align: center;
   }
   p {
     font-size: 1.1rem;
@@ -340,6 +344,13 @@ footer {
   a {
     color: var(--color-14);
   }
+}
+
+.err-msg-text {
+  margin: 10px 0;
+  color: var(--color-12);
+  font-size: 1.2rem;
+  font-style: italic;
 }
 
 @media screen and (max-width: 600px) {

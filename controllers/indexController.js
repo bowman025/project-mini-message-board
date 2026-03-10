@@ -1,6 +1,22 @@
 const db = require('../db/queries');
+const { 
+  body, 
+  validationResult, 
+  matchedData, 
+} = require('express-validator');
 const formatDateTime = require('../utils/formatDateTime');
-const CustomValidationError = require('../errors/CustomValidationError');
+
+const alphaErr = 'must only contain letters.';
+const nameLengthErr = 'must be between 1 and 50 characters.';
+const messageLengthErr = 'must be between 1 and 255 characters.';
+
+const validateMessage = [
+  body('name').trim()
+    .isAlpha().withMessage(`Name ${alphaErr}`)
+    .isLength({ min: 1, max: 50 }).withMessage(`Name ${nameLengthErr}`),
+  body('message').trim()
+    .isLength({ min: 1, max: 255 }).withMessage(`Message ${messageLengthErr}`),
+];
 
 async function listMessages(_, res) {
   const messages = await db.getAllMessages();
@@ -17,15 +33,22 @@ function newMessageForm(_, res) {
   res.render('newMessage', { title: 'MMB: New Message' });
 };
 
-async function createMessage(req, res, next) {
-  const { name, message } = req.body;
-  const added = new Date();
-  if (!name || !message) {
-    const err = new CustomValidationError('Name and Message Are Required.');
-    return next(err);
+const createMessage = [
+  validateMessage,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render('newMessage', {
+        title: 'MMB: New Message - 400 Error',
+        errors: errors.array(),
+        data: matchedData(req, { onlyValidData: false }),
+      });
+    }
+    const { name, message } = matchedData(req);
+    const added = new Date();
+    await db.addMessage(message, name, added);
+    res.redirect('/');
   }
-  await db.addMessage(message, name, added);
-  res.redirect('/');
-};
+];
 
 module.exports = { listMessages, newMessageForm, createMessage };

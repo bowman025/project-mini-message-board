@@ -5,6 +5,11 @@
       <h1>What do you want to say?</h1>
       <%- include('../partials/form') %>
     </div>
+    <% if (locals.errors) { %>
+      <% errors.forEach(error => { %>
+        <p class="err-msg-text"><%= error.msg %></p>
+      <% }); %>
+    <% } %>
     <a href="/" class="msg-home">
       <img src="/images/home.svg" alt="Home">
     </a>

@@ -8,6 +8,7 @@
 			id="name"
 			placeholder="John Doe"
 			maxlength="50"
+      value="<%= locals.data ? data.name : '' %>"
 		>
 		<p>*50 characters max</p>
 	</div>
@@ -20,6 +21,7 @@
 			id="message"
 			placeholder="Hello World!"
 			maxlength="255"
+      value="<%= locals.data ? data.message : '' %>"
 		>
 		<p>*255 characters max</p>
 	</div>
