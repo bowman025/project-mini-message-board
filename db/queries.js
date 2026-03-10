@@ -6,11 +6,11 @@ async function getAllMessages() {
 }
 
 async function findMessage(id) {
-  const message = await pool.query(
+  const { rows } = await pool.query(
     'SELECT * FROM messages WHERE id = $1',
     [id]
   );
-  return message;
+  return rows[0];
 }
 
 async function addMessage(text, username, added) {
