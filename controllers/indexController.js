@@ -1,8 +1,9 @@
-const messages = require('../db/messages');
+const db = require('../db/queries');
 const formatDateTime = require('../utils/formatDateTime');
 const CustomValidationError = require('../errors/CustomValidationError');
 
-function listMessages(_, res) {
+async function listMessages(_, res) {
+  const messages = await db.getAllMessages();
   const sorted = [...messages]
     .sort((a, b) => b.added - a.added)
     .map(m => ({
@@ -16,18 +17,14 @@ function newMessageForm(_, res) {
   res.render('newMessage', { title: 'MMB: New Message' });
 };
 
-function createMessage(req, res, next) {
+async function createMessage(req, res, next) {
   const { name, message } = req.body;
+  const added = new Date();
   if (!name || !message) {
     const err = new CustomValidationError('Name and Message Are Required.');
     return next(err);
   }
-  messages.push({
-    id: crypto.randomUUID(),
-    text: req.body.message,
-    user: req.body.name,
-    added: new Date(),
-  });
+  await db.addMessage(message, name, added);
   res.redirect('/');
 };
 
